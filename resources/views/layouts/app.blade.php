@@ -38,6 +38,9 @@
                     <li class="nav-item">
                         <a href="/listings/buy" class="nav-link">Listings</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="contact" class="nav-link">Contact</a>
+                    </li>
                 </ul>
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
