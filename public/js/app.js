@@ -2112,16 +2112,22 @@ __webpack_require__.r(__webpack_exports__);
 
 function Map() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    mapboxgl.accessToken = "pk.eyJ1IjoiYnJlbmRvaWsiLCJhIjoiY2ticXpod3JzMG9pdTJzbXBteWEyMWFrMyJ9.opn5aQIeDNyCWt-dNvfgSg";
-    var map = new mapboxgl.Map({
-      container: "map",
-      // container ID
-      style: "mapbox://styles/mapbox/streets-v11",
-      // style URL
-      center: [-74.5, 40],
-      // starting position [lng, lat]
-      zoom: 9 // starting zoom
+    window.addEventListener("load", function (event) {
+      mapboxgl.accessToken = "pk.eyJ1IjoiYnJlbmRvaWsiLCJhIjoiY2ticXpod3JzMG9pdTJzbXBteWEyMWFrMyJ9.opn5aQIeDNyCWt-dNvfgSg";
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var lat = position.coords.latitude;
+        var _long = position.coords.longitude;
+        var map = new mapboxgl.Map({
+          container: "map",
+          // container ID
+          style: "mapbox://styles/mapbox/streets-v11",
+          // style URL
+          center: [_long, lat],
+          // starting position [lng, lat]
+          zoom: 9 // starting zoom
 
+        });
+      });
     });
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {

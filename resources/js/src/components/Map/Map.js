@@ -2,13 +2,21 @@ import React, { useEffect } from "react";
 
 export default function Map() {
     useEffect(() => {
-        mapboxgl.accessToken =
-            "pk.eyJ1IjoiYnJlbmRvaWsiLCJhIjoiY2ticXpod3JzMG9pdTJzbXBteWEyMWFrMyJ9.opn5aQIeDNyCWt-dNvfgSg";
-        const map = new mapboxgl.Map({
-            container: "map", // container ID
-            style: "mapbox://styles/mapbox/streets-v11", // style URL
-            center: [-74.5, 40], // starting position [lng, lat]
-            zoom: 9, // starting zoom
+        window.addEventListener("load", (event) => {
+            mapboxgl.accessToken =
+                "pk.eyJ1IjoiYnJlbmRvaWsiLCJhIjoiY2ticXpod3JzMG9pdTJzbXBteWEyMWFrMyJ9.opn5aQIeDNyCWt-dNvfgSg";
+
+            navigator.geolocation.getCurrentPosition(function (position) {
+                let lat = position.coords.latitude;
+                let long = position.coords.longitude;
+
+                const map = new mapboxgl.Map({
+                    container: "map", // container ID
+                    style: "mapbox://styles/mapbox/streets-v11", // style URL
+                    center: [long, lat], // starting position [lng, lat]
+                    zoom: 9, // starting zoom
+                });
+            });
         });
     });
 
